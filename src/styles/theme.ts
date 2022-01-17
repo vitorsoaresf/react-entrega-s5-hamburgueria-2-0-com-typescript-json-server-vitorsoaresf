@@ -12,9 +12,6 @@ export const theme = extendTheme({
       300: "#828282",
       600: "#333333",
     },
-    red: {
-      600: "#EB5757",
-    },
     feedback: {
       warning: "#FFCD07",
       negative: "#E60000",
