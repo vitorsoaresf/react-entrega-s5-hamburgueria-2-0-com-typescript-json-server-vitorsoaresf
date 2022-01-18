@@ -10,6 +10,7 @@ export const theme = extendTheme({
       0: "#F5F5F5",
       100: "#E0E0E0",
       300: "#828282",
+      400: "#BDBDBD",
       600: "#333333",
     },
     feedback: {

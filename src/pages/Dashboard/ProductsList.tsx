@@ -22,7 +22,12 @@ interface ProductListProps {
 
 export const ProductsList = ({ products }: ProductListProps) => {
   return (
-    <UnorderedList overflow-x="scroll" display="flex" flexDirection="row">
+    <UnorderedList
+      m="30px 0px 0px 0px"
+      overflow-x="scroll"
+      display="flex"
+      flexDirection="row"
+    >
       {products.length > 0 &&
         products.map((element, index) => (
           <ListItem listStyleType="none" key={element.product}>
