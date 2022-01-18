@@ -12,12 +12,14 @@ interface Comment {
   comment: string;
 }
 
-interface Product {
+interface CardProps {
   product: string;
   price: string;
   category: string;
   id: number;
-  comments: Comment[];
+  img: string;
+  quantity: number;
+  comments?: Comment[];
 }
 
 export const Dashboard = () => {

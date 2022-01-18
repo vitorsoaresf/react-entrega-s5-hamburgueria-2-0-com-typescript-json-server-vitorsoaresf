@@ -33,7 +33,8 @@ interface Product {
   category: string;
   id: number;
   img: string;
-  comments: Comment[];
+  quantity: number;
+  comments?: Comment[];
 }
 
 interface ProductsContextData {

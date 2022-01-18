@@ -1,13 +1,26 @@
-import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Input,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { FaSearch, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../context/Auth.Context";
+import { useCart } from "../../context/Cart.Context";
 import { useProduct } from "../../context/Products.Context";
 import { InputSearch } from "./InputSearch";
+import { ModalCart } from "./ModalCart";
 
 export const Header = () => {
   const [search, setSearch] = useState(false);
   const { signOut } = useAuth();
+  const { cart } = useCart();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box
@@ -41,6 +54,18 @@ export const Header = () => {
           <FaSearch />
         </Button>
         <Button bg="none" w="50px" fontSize="4xl" color="gray.400">
+          <Text
+            m="0px 0px 20px 15px"
+            fontSize="0.75rem"
+            borderRadius="5px"
+            padding="2px 4px"
+            color="white"
+            bg="green.800"
+            position="absolute"
+            onClick={onOpen}
+          >
+            {cart.length}
+          </Text>
           <FaShoppingCart />
         </Button>
         <Button
@@ -54,6 +79,7 @@ export const Header = () => {
         </Button>
       </Flex>
       {search && <InputSearch setSearch={setSearch} />}
+      <ModalCart isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 };

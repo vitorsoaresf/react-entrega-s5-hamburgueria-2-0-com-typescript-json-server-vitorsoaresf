@@ -49,8 +49,8 @@ const useAuth = () => {
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [data, setData] = useState<AuthState>(() => {
-    const accessToken = localStorage.getItem("@Doit:accessToken");
-    const user = localStorage.getItem("@Doit:user");
+    const accessToken = localStorage.getItem("@Hamburgueria:accessToken");
+    const user = localStorage.getItem("@Hamburgueria:user");
 
     if (accessToken && user) {
       return { accessToken, user: JSON.parse(user) };
@@ -64,15 +64,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const { accessToken, user } = response.data;
 
-    localStorage.setItem("@Doit:accessToken", accessToken);
-    localStorage.setItem("@Doit:user", JSON.stringify(user));
+    localStorage.setItem("@Hamburgueria:accessToken", accessToken);
+    localStorage.setItem("@Hamburgueria:user", JSON.stringify(user));
 
     setData({ accessToken, user });
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem("@Doit:accessToken");
-    localStorage.removeItem("@Doit:user");
+    localStorage.removeItem("@Hamburgueria:accessToken");
+    localStorage.removeItem("@Hamburgueria:user");
 
     setData({} as AuthState);
   }, []);
