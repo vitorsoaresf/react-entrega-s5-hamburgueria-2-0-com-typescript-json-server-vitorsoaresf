@@ -21,7 +21,6 @@ interface Product {
 }
 
 export const Dashboard = () => {
-  const { signOut } = useAuth();
   const { productsCopy, loadProducts } = useProduct();
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export const Dashboard = () => {
     <>
       <Header />
       <ProductsList products={productsCopy} />
-      <Button onClick={signOut}>Logout</Button>
     </>
   );
 };

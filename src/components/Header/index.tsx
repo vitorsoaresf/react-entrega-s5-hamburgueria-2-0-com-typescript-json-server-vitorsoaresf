@@ -1,12 +1,14 @@
 import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaSearch, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
+import { useAuth } from "../../context/Auth.Context";
 import { useProduct } from "../../context/Products.Context";
 
 export const Header = () => {
   const [search, setSearch] = useState(false);
   const [change, setChange] = useState("");
   const { searchProducts } = useProduct();
+  const { signOut } = useAuth();
 
   return (
     <Box
@@ -42,7 +44,13 @@ export const Header = () => {
         <Button bg="none" w="50px" fontSize="4xl" color="gray.400">
           <FaShoppingCart />
         </Button>
-        <Button bg="none" w="50px" fontSize="4xl" color="gray.400">
+        <Button
+          onClick={signOut}
+          bg="none"
+          w="50px"
+          fontSize="4xl"
+          color="gray.400"
+        >
           <FaSignOutAlt />
         </Button>
       </Flex>
@@ -64,7 +72,10 @@ export const Header = () => {
             justifyContent="space-between"
           >
             <Input
-              onChange={(e) => searchProducts(e.target.value)}
+              onChange={(e) => {
+                searchProducts(e.target.value);
+                setChange(e.target.value);
+              }}
               h="55px"
               w="90%"
               border="none"
@@ -74,7 +85,10 @@ export const Header = () => {
               }}
             />
             <Button
-              onClick={() => setSearch(false)}
+              onClick={() => {
+                searchProducts(change);
+                setSearch(false);
+              }}
               bg="green.800"
               color="white"
               mr="5px"
