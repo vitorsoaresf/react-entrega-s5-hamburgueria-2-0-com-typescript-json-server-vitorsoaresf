@@ -1,6 +1,7 @@
 import { Button, Flex, Heading, ListItem, OrderedList } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { Card } from "../../components/Card";
+import { Header } from "../../components/Header";
 import { useAuth } from "../../context/Auth.Context";
 import { useProduct } from "../../context/Products.Context";
 import { ProductsList } from "./ProductsList";
@@ -29,6 +30,7 @@ export const Dashboard = () => {
 
   return (
     <>
+      <Header />
       <ProductsList products={products} />
       <Button onClick={signOut}>Logout</Button>
     </>

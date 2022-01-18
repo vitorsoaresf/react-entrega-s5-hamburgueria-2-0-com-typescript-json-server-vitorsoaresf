@@ -24,9 +24,10 @@ export const ProductsList = ({ products }: ProductListProps) => {
   return (
     <UnorderedList
       m="30px 0px 0px 0px"
-      overflow-x="scroll"
+      overflowX="scroll"
       display="flex"
-      flexDirection="row"
+      flexWrap="nowrap"
+      w="100vw"
     >
       {products.length > 0 &&
         products.map((element, index) => (
