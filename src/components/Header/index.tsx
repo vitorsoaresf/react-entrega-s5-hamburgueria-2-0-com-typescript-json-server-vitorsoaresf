@@ -3,11 +3,10 @@ import { useState } from "react";
 import { FaSearch, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../context/Auth.Context";
 import { useProduct } from "../../context/Products.Context";
+import { InputSearch } from "./InputSearch";
 
 export const Header = () => {
   const [search, setSearch] = useState(false);
-  const [change, setChange] = useState("");
-  const { searchProducts } = useProduct();
   const { signOut } = useAuth();
 
   return (
@@ -54,50 +53,7 @@ export const Header = () => {
           <FaSignOutAlt />
         </Button>
       </Flex>
-      {search && (
-        <Flex
-          w="100vw"
-          position="absolute"
-          bg="gray.0"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Flex
-            w="90vw"
-            bg="white"
-            h="60px"
-            alignItems="center"
-            borderRadius="8px"
-            border="2px"
-            justifyContent="space-between"
-          >
-            <Input
-              onChange={(e) => {
-                searchProducts(e.target.value);
-                setChange(e.target.value);
-              }}
-              h="55px"
-              w="90%"
-              border="none"
-              _focus={{
-                outline: "none",
-                color: "gray.600",
-              }}
-            />
-            <Button
-              onClick={() => {
-                searchProducts(change);
-                setSearch(false);
-              }}
-              bg="green.800"
-              color="white"
-              mr="5px"
-            >
-              <FaSearch />
-            </Button>
-          </Flex>
-        </Flex>
-      )}
+      {search && <InputSearch setSearch={setSearch} />}
     </Box>
   );
 };
