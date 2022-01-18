@@ -38,7 +38,9 @@ interface Product {
 
 interface ProductsContextData {
   products: Product[];
+  productsCopy: Product[];
   loadProducts: () => void;
+  searchProducts: (search: string) => void;
 }
 
 const ProductContext = createContext<ProductsContextData>(
@@ -57,6 +59,7 @@ const useProduct = () => {
 
 const ProductProvider = ({ children }: ProductsProviderProps) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [productsCopy, setProductsCopy] = useState<Product[]>([]);
 
   const imgs = [
     img_hamburguer,
@@ -77,15 +80,27 @@ const ProductProvider = ({ children }: ProductsProviderProps) => {
           (element: Product, index: number) => (element.img = imgs[index])
         );
         setProducts([...response.data]);
+        setProductsCopy([...response.data]);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const searchProducts = (search: string) => {
+    const elementsCopy = [...products];
+    setProductsCopy(
+      elementsCopy.filter((element) =>
+        element.product.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  };
 
   return (
     <ProductContext.Provider
       value={{
         products,
+        productsCopy,
         loadProducts,
+        searchProducts,
       }}
     >
       {children}

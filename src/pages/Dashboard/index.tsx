@@ -22,7 +22,7 @@ interface Product {
 
 export const Dashboard = () => {
   const { signOut } = useAuth();
-  const { products, loadProducts } = useProduct();
+  const { productsCopy, loadProducts } = useProduct();
 
   useEffect(() => {
     loadProducts();
@@ -31,7 +31,7 @@ export const Dashboard = () => {
   return (
     <>
       <Header />
-      <ProductsList products={products} />
+      <ProductsList products={productsCopy} />
       <Button onClick={signOut}>Logout</Button>
     </>
   );
