@@ -61,17 +61,20 @@ export const Header = () => {
           fontSize="4xl"
           color="gray.400"
         >
-          <Text
-            m="0px 0px 20px 15px"
-            fontSize="0.75rem"
-            borderRadius="5px"
-            padding="2px 4px"
-            color="white"
-            bg="green.800"
-            position="absolute"
-          >
-            {cart.length}
-          </Text>
+          {cart.length > 0 && (
+            <Text
+              m="0px 0px 20px 15px"
+              fontSize="0.75rem"
+              borderRadius="5px"
+              padding="2px 4px"
+              color="white"
+              bg="green.800"
+              position="absolute"
+            >
+              {cart.length}
+            </Text>
+          )}
+
           <FaShoppingCart />
         </Button>
         <Button

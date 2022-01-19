@@ -5,7 +5,7 @@ import { CartList } from "../Header/CartList";
 export const ModalBodyC = () => {
   const { cart } = useCart();
   return (
-    <ModalBody alignItems="center">
+    <ModalBody alignItems="center" padding="0">
       <Flex w="100%" minH="158px">
         {cart.length === 0 ? (
           <Box textAlign="center" w="100%">
