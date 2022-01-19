@@ -30,6 +30,7 @@ export const RegisterHeader = () => {
         h="95px"
         alignItems="center"
         justifyContent="center"
+        boxShadow=" rgba(149, 157, 165, 0.2) 0px 8px 24px"
       >
         <Center
           bg="green.200"

@@ -65,17 +65,17 @@ export const Login = () => {
       height={["auto", "auto", "100vh", "100vh"]}
     >
       <Flex
-        display={["column", "column", "row", "row"]}
+        flexDirection={["column-reverse", "column-reverse", "row", "row"]}
         alignItems="center"
         justifyContent="center"
       >
-        <LoginHeader />
         <LoginForm
           errors={errors}
           handleSignIn={handleSubmit(handleSignIn)}
           loading={loading}
           register={register}
         />
+        <LoginHeader />
       </Flex>
     </Flex>
   );

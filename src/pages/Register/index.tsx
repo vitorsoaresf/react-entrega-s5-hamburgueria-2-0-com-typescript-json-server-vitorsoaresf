@@ -71,7 +71,7 @@ export const Register = () => {
       height={["auto", "auto", "100vh", "100vh"]}
     >
       <Flex
-        display={["column", "column", "row", "row"]}
+        flexDir={["column", "column", "row", "row"]}
         alignItems="center"
         justifyContent="center"
       >

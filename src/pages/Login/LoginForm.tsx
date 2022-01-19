@@ -47,6 +47,7 @@ export const LoginForm = ({
         border="1px"
         borderColor="gray.100"
         borderRadius="5px"
+        boxShadow=" rgba(149, 157, 165, 0.2) 0px 8px 24px"
       >
         <Heading size="lg" m="30px 0px 0px 18px">
           {" "}
@@ -72,7 +73,7 @@ export const LoginForm = ({
             />
           </Flex>
         </VStack>
-        <VStack mt="4" spacing="5">
+        <VStack m="10px 0px 20px 0px" spacing="5">
           <Button
             isLoading={loading}
             bg="green.800"
