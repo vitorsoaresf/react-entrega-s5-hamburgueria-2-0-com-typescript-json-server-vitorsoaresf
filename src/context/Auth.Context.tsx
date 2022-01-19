@@ -23,6 +23,12 @@ interface SignInCredentials {
   password: string;
 }
 
+interface SignUpCredentials {
+  email: string;
+  password: string;
+  name: string;
+}
+
 interface AuthState {
   accessToken: string;
   user: User;
@@ -32,6 +38,7 @@ interface AuthContextData {
   user: User;
   accessToken: string;
   signIn: (credentials: SignInCredentials) => Promise<void>;
+  signUp: (credentials: SignUpCredentials) => Promise<void>;
   signOut: () => void;
 }
 
@@ -70,6 +77,16 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ accessToken, user });
   }, []);
 
+  const signUp = useCallback(
+    async ({ email, password, name }: SignUpCredentials) => {
+      const response = await api
+        .post("/register", { email, password, name })
+        .then((response) => console.log(response))
+        .catch((err) => console.log(err));
+    },
+    []
+  );
+
   const signOut = useCallback(() => {
     localStorage.removeItem("@Hamburgueria:accessToken");
     localStorage.removeItem("@Hamburgueria:user");
@@ -83,6 +100,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         accessToken: data.accessToken,
         user: data.user,
         signIn,
+        signUp,
         signOut,
       }}
     >
