@@ -69,6 +69,7 @@ export const ProductsList = ({ products }: ProductListProps) => {
                   status: "success",
                   duration: 1000,
                   isClosable: true,
+                  position: "top",
                 });
               }}
               m="0px 0px 10px 20px"
