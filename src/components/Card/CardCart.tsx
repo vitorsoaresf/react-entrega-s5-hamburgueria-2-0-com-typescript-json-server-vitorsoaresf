@@ -9,6 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { FaTrash } from "react-icons/fa";
 import { useCart } from "../../context/Cart.Context";
 
 interface Comment {
@@ -32,16 +33,22 @@ interface CardCartProps {
 }
 
 export const CardCart = ({ element }: CardCartProps) => {
-  const { addQuantity } = useCart();
-  const [count, setCount] = useState(element.quantity);
+  const { addQuantity, subQuantity, subProducts } = useCart();
+  const [count, setCount] = useState(false);
 
   const addCount = (element: Product) => {
     addQuantity(element);
-    setCount(count + 1);
+    setCount(!count);
   };
+
+  const subCount = (element: Product) => {
+    subQuantity(element);
+    setCount(!count);
+  };
+
   return (
-    <Flex w="100%" m="5px 0">
-      <Flex alignItems="flex-start">
+    <Flex w="100%" m="5px 0" justifyContent="space-between">
+      <Flex bg="red" alignItems="center" w="90%">
         <Center
           boxSize="sm"
           borderRadius="5px"
@@ -61,12 +68,15 @@ export const CardCart = ({ element }: CardCartProps) => {
             {element.product}
           </Heading>
           <Flex>
-            <Button>-</Button>
-            <Text>{count}</Text>
+            <Button onClick={() => subCount(element)}>-</Button>
+            <Text>{element.quantity}</Text>
             <Button onClick={() => addCount(element)}>+</Button>
           </Flex>
         </Flex>
       </Flex>
+      <Button onClick={() => subProducts(element)}>
+        <FaTrash />
+      </Button>
     </Flex>
   );
 };

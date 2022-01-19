@@ -53,7 +53,13 @@ export const Header = () => {
         >
           <FaSearch />
         </Button>
-        <Button bg="none" w="50px" fontSize="4xl" color="gray.400">
+        <Button
+          onClick={onOpen}
+          bg="none"
+          w="50px"
+          fontSize="4xl"
+          color="gray.400"
+        >
           <Text
             m="0px 0px 20px 15px"
             fontSize="0.75rem"
@@ -62,7 +68,6 @@ export const Header = () => {
             color="white"
             bg="green.800"
             position="absolute"
-            onClick={onOpen}
           >
             {cart.length}
           </Text>

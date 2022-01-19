@@ -26,6 +26,8 @@ interface CartContextData {
   cart: Product[];
   addCart: (product: Product) => void;
   addQuantity: (product: Product) => void;
+  removeAll: () => void;
+  subQuantity: (product: Product) => void;
   subProducts: (product: Product) => void;
 }
 
@@ -57,7 +59,12 @@ const CartProvider = ({ children }: CartProviderProps) => {
     }
   };
 
-  const subProducts = (product: Product) => {};
+  const subProducts = (searchProduct: Product) => {
+    let copyArr = [...cart];
+    setCart(
+      copyArr.filter((element) => element.product !== searchProduct.product)
+    );
+  };
 
   const addQuantity = (searchProduct: Product) => {
     cart.find((element) => {
@@ -68,6 +75,27 @@ const CartProvider = ({ children }: CartProviderProps) => {
     setCart([...cart]);
   };
 
+  const subQuantity = (searchProduct: Product) => {
+    let copyArr = [...cart];
+    cart.find((element) => {
+      if (element.product === searchProduct.product) {
+        if (searchProduct.quantity > 0) {
+          element.quantity--;
+          if (element.quantity === 0) {
+            copyArr = copyArr.filter(
+              (element) => element.product !== searchProduct.product
+            );
+          }
+        }
+      }
+    });
+    setCart([...copyArr]);
+  };
+
+  const removeAll = () => {
+    setCart([]);
+  };
+
   localStorage.setItem("@Hamburgueria:cart", JSON.stringify(cart));
   return (
     <CartContext.Provider
@@ -75,6 +103,8 @@ const CartProvider = ({ children }: CartProviderProps) => {
         cart,
         addCart,
         addQuantity,
+        removeAll,
+        subQuantity,
         subProducts,
       }}
     >

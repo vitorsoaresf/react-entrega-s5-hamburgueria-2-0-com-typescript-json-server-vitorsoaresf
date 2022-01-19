@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useCart } from "../../context/Cart.Context";
 import { CardCart } from "../Card/CardCart";
+import { CartList } from "./CartList";
 
 interface ModalCartProps {
   isOpen: boolean;
@@ -24,7 +25,7 @@ interface ModalCartProps {
 }
 
 export const ModalCart = ({ isOpen, onClose }: ModalCartProps) => {
-  const { cart } = useCart();
+  const { cart, removeAll } = useCart();
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -43,32 +44,19 @@ export const ModalCart = ({ isOpen, onClose }: ModalCartProps) => {
                 <Text fontSize="sm">Adicione Itens</Text>
               </Box>
             ) : (
-              <UnorderedList m="0" w="100%" bg="pink" listStyleType="none">
-                {cart.map((element, index) => (
-                  <ListItem key={index}>
-                    <CardCart element={element} />
-                  </ListItem>
-                ))}
-                <Flex bg="blue" justifyContent="space-between">
-                  <Text>Total</Text>
-                  <Text>
-                    R$
-                    {cart
-                      .reduce(
-                        (acc, element) =>
-                          (acc += Number(element.price) * element.quantity),
-                        0
-                      )
-                      .toFixed(2)}
-                  </Text>
-                </Flex>
-              </UnorderedList>
+              <CartList />
             )}
           </Flex>
         </ModalBody>
 
         <ModalFooter>
-          <Button bg="gray.100" color="gray.300" w="100%" h="60px">
+          <Button
+            onClick={removeAll}
+            bg="gray.100"
+            color="gray.300"
+            w="100%"
+            h="60px"
+          >
             Remover todos{" "}
           </Button>
         </ModalFooter>
