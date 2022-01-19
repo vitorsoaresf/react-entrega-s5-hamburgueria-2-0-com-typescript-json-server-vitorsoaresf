@@ -1,6 +1,6 @@
 import { Button, Flex, Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
 import { useProduct } from "../../context/Products.Context";
 
 interface InputSearchProps {
@@ -27,6 +27,7 @@ export const InputSearch = ({ setSearch }: InputSearchProps) => {
         alignItems="center"
         borderRadius="8px"
         border="2px"
+        borderColor="green.800"
         justifyContent="space-between"
       >
         <Input
@@ -44,6 +45,7 @@ export const InputSearch = ({ setSearch }: InputSearchProps) => {
           h="55px"
           w="90%"
           border="none"
+          placeholder="Digite aqui sua pesquisa"
           _focus={{
             outline: "none",
             color: "gray.600",
@@ -51,21 +53,15 @@ export const InputSearch = ({ setSearch }: InputSearchProps) => {
         />
         <Button
           onClick={() => {
-            toast({
-              title: "Resultado da pesquisa",
-              status: "success",
-              duration: 1000,
-              isClosable: true,
-              variant: "top-accent",
-            });
             searchProducts(change);
             setSearch(false);
           }}
-          bg="green.800"
-          color="white"
+          bg="none"
+          color="gray.800"
           mr="5px"
+          fontSize="xl"
         >
-          <FaSearch />
+          <AiOutlineClose />
         </Button>
       </Flex>
     </Flex>

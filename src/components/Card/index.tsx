@@ -18,13 +18,7 @@ interface CardProps {
 
 export const Card = ({ product, price, category, img }: CardProps) => {
   return (
-    <VStack
-      alignItems="flex-start"
-      flexDirection="column"
-      // ml="16px"
-      h="346px"
-      w="300px"
-    >
+    <VStack alignItems="flex-start" flexDirection="column" h="346px" w="300px">
       <Center boxSize="sm" bg="gray.0" w="100%">
         <Image src={img} alt="Dan Abramov" w="177px" h="177px" />
       </Center>

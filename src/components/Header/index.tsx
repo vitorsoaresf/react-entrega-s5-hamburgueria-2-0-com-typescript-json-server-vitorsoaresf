@@ -25,14 +25,19 @@ export const Header = () => {
 
   return (
     <Box
-      w="100vw"
+      w="100%"
       h="80px"
       bg="gray.0"
       display="flex"
       alignItems="center"
       justifyContent="space-between"
     >
-      <Heading ml="16px" display="flex" alignItems="center" fontSize={["2xl"]}>
+      <Heading
+        ml={["16px", "16px", "75px", "50px", "100px"]}
+        display="flex"
+        alignItems="center"
+        fontSize={["2xl"]}
+      >
         Burguer{" "}
         <Text
           h="100%"
@@ -44,7 +49,7 @@ export const Header = () => {
           Kenzie
         </Text>
       </Heading>
-      <Flex>
+      <Flex mr={["0px", "0px", "20px"]}>
         <Button
           onClick={() => setSearch(true)}
           bg="none"
