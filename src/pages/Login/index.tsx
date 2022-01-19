@@ -1,4 +1,4 @@
-import { Flex, Heading, toast, VStack } from "@chakra-ui/react";
+import { Flex, Heading, Text, toast, VStack } from "@chakra-ui/react";
 import { LoginForm } from "./LoginForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Sign } from "crypto";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+import { LoginHeader } from "./LoginHeader";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -61,16 +62,14 @@ export const Login = () => {
       justifyContent="center"
       height={["auto", "auto", "100vh", "100vh"]}
     >
-      <Flex>
+      <Flex display={["column", "column", "row", "row"]}>
+        <LoginHeader />
         <LoginForm
           errors={errors}
           handleSignIn={handleSubmit(handleSignIn)}
           loading={loading}
           register={register}
         />
-        <VStack>
-          <Heading>Aqui2</Heading>
-        </VStack>
       </Flex>
     </Flex>
   );
