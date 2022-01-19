@@ -45,10 +45,12 @@ export const Login = () => {
       .catch((err) => {
         toast({
           title: "Conta não encontrada.",
-          description: "Tente se registrar clicando no botão Cadastro",
+          description:
+            " - Registre-se ou confira os campos se estão incorretos",
           status: "error",
           duration: 3000,
           isClosable: true,
+          position: "top",
         });
         setLoading(false);
         reset();
@@ -62,7 +64,11 @@ export const Login = () => {
       justifyContent="center"
       height={["auto", "auto", "100vh", "100vh"]}
     >
-      <Flex display={["column", "column", "row", "row"]}>
+      <Flex
+        display={["column", "column", "row", "row"]}
+        alignItems="center"
+        justifyContent="center"
+      >
         <LoginHeader />
         <LoginForm
           errors={errors}

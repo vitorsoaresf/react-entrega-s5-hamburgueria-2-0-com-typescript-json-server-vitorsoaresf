@@ -1,4 +1,12 @@
-import { Button, Heading, VStack, Grid, Box, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  VStack,
+  Grid,
+  Box,
+  Text,
+  Flex,
+} from "@chakra-ui/react";
 import { Input } from "../../components/Form/Input";
 import {
   DeepMap,
@@ -29,73 +37,74 @@ export const LoginForm = ({
   const history = useHistory();
 
   return (
-    <Grid
-      onSubmit={handleSignIn}
-      as="form"
-      padding="30px 15px"
-      border="3px solid"
-      borderColor="gray.100"
-      bg="white"
-      color="gray.900"
-      mt={["4", "4", "0"]}
-      w={["100%", "100%", "80%", "80%"]}
-    >
-      <Heading size="lg"> Bem vindo de volta!</Heading>
-      <VStack mt="6" spacing="5">
-        <Box w="100%">
-          <Input
-            placeholder="Digite seu login"
-            type="email"
-            label="Login"
-            error={errors.email}
-            icon={FaEnvelope}
-            {...register("email")}
-          />
-          {!errors.email && (
-            <Text ml="1" mt="1" color="gray.300">
-              Exemplo: nome@email.com
-            </Text>
-          )}
-        </Box>
-        <Input
-          type="password"
-          placeholder="Digite sua senha"
-          label="Senha"
-          error={errors.password}
-          icon={FaLock}
-          {...register("password")}
-        />
-      </VStack>
-      <VStack mt="4" spacing="5">
-        <Button
-          isLoading={loading}
-          bg="purple.800"
-          w="100%"
-          color="white"
-          h="60px"
-          borderRadius="8px"
-          _hover={{
-            background: "purple.900",
-          }}
-          type="submit"
-        >
-          Entrar
-        </Button>
-        <Text color="gray.400">Ainda não possui uma conta? </Text>
-        <Button
-          bg="gray.100"
-          w="100%"
-          color="gray.300"
-          h="60px"
-          borderRadius="8px"
-          onClick={() => history.push("/register")}
-          _hover={{
-            background: "gray.200",
-          }}
-        >
-          Cadastrar
-        </Button>
-      </VStack>
-    </Grid>
+    <VStack w="100vw" maxW="377px" m="0" display="flex">
+      <Flex
+        onSubmit={handleSignIn}
+        as="form"
+        w="90%"
+        m="20px 0px 10px 0"
+        flexDir="column"
+        border="1px"
+        borderColor="gray.100"
+        borderRadius="5px"
+      >
+        <Heading size="lg" m="30px 0px 0px 18px">
+          {" "}
+          Login
+        </Heading>
+        <VStack mt="6" spacing="5">
+          <Flex w="90%">
+            <Input
+              placeholder="Digite seu email"
+              type="email"
+              error={errors.email}
+              icon={FaEnvelope}
+              {...register("email")}
+            />
+          </Flex>
+          <Flex w="90%">
+            <Input
+              type="password"
+              placeholder="Digite sua senha"
+              error={errors.password}
+              icon={FaLock}
+              {...register("password")}
+            />
+          </Flex>
+        </VStack>
+        <VStack mt="4" spacing="5">
+          <Button
+            isLoading={loading}
+            bg="green.800"
+            w="91%"
+            color="white"
+            h="60px"
+            borderRadius="8px"
+            _hover={{
+              background: "green.600",
+            }}
+            type="submit"
+          >
+            Entrar
+          </Button>
+          <Text color="gray.400" w="90%" textAlign="center">
+            Crie sua conta para saborear muitas delícias e matar sua fome!{" "}
+          </Text>
+          <Button
+            bg="gray.100"
+            w="91%"
+            color="gray.300"
+            h="60px"
+            borderRadius="8px"
+            onClick={() => history.push("/register")}
+            _hover={{
+              background: "gray.200",
+            }}
+          >
+            Cadastrar
+          </Button>
+        </VStack>
+      </Flex>
+    </VStack>
   );
 };

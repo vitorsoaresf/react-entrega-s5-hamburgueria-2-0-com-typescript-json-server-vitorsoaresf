@@ -25,6 +25,7 @@ export const LoginHeader = () => {
       <Flex
         border="1px"
         borderColor="gray.100"
+        borderRadius="5px"
         w="90%"
         h="95px"
         alignItems="center"

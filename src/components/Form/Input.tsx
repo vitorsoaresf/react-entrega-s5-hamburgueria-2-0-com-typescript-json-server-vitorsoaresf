@@ -34,7 +34,7 @@ type inputVariationOptions = {
 const inputVariation: inputVariationOptions = {
   error: "feedback.negative",
   default: "gray.200",
-  focus: "purple.800",
+  focus: "green.800",
   filled: "green.500",
 };
 
