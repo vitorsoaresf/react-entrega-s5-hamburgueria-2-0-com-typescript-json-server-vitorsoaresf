@@ -1,10 +1,9 @@
-import { Flex, Heading, toast, VStack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAuth } from "../../context/Auth.Context";
 import { useState } from "react";
-import { Sign } from "crypto";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { RegisterForm } from "./RegisterForm";
@@ -49,8 +48,6 @@ export const Register = () => {
       .then((_) => {
         history.push("/");
         setLoading(false);
-      })
-      .catch((err) => {
         toast({
           title: "Conta Registrada com sucesso.",
           description: "Tente realizar o Login",
@@ -59,6 +56,8 @@ export const Register = () => {
           isClosable: true,
           position: "top",
         });
+      })
+      .catch((err) => {
         setLoading(false);
       });
   };

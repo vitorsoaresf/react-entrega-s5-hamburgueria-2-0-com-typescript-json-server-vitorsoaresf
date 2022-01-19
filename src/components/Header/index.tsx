@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   Heading,
-  Input,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -11,10 +10,8 @@ import { useState } from "react";
 import { FaSearch, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../context/Auth.Context";
 import { useCart } from "../../context/Cart.Context";
-import { useProduct } from "../../context/Products.Context";
 import { ModalCart } from "../Modal";
 import { InputSearch } from "./InputSearch";
-// import { ModalCart } from "./ModalCart";
 
 export const Header = () => {
   const [search, setSearch] = useState(false);

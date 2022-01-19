@@ -9,7 +9,7 @@ export const ModalBodyC = () => {
       <Flex w="100%" minH="158px">
         {cart.length === 0 ? (
           <Box textAlign="center" w="100%">
-            <Text fontWeight="700" fontSize="lg">
+            <Text mt="50px" fontWeight="700" fontSize="lg">
               Sua sacola está vazia
             </Text>
             <Text fontSize="sm">Adicione Itens</Text>
