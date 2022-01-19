@@ -81,13 +81,13 @@ export const LoginForm = ({
             h="60px"
             borderRadius="8px"
             _hover={{
-              background: "green.600",
+              filter: "brightness(80%)",
             }}
             type="submit"
           >
-            Entrar
+            Logar
           </Button>
-          <Text color="gray.400" w="90%" textAlign="center">
+          <Text fontSize="14px" color="gray.400" w="70%" textAlign="center">
             Crie sua conta para saborear muitas delícias e matar sua fome!{" "}
           </Text>
           <Button

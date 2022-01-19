@@ -8,6 +8,7 @@ import { Sign } from "crypto";
 import { useToast } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { RegisterForm } from "./RegisterForm";
+import { RegisterHeader } from "./RegisterHeader";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -69,16 +70,18 @@ export const Register = () => {
       justifyContent="center"
       height={["auto", "auto", "100vh", "100vh"]}
     >
-      <Flex>
+      <Flex
+        display={["column", "column", "row", "row"]}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <RegisterHeader />
         <RegisterForm
           errors={errors}
           handleSignUp={handleSubmit(handleSignUp)}
           loading={loading}
           register={register}
         />
-        <VStack>
-          <Heading>Aqui2</Heading>
-        </VStack>
       </Flex>
     </Flex>
   );

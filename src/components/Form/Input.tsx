@@ -89,7 +89,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           _focus={{
             bg: "gray.100",
           }}
-          size="lg"
+          size="md"
           h="60px"
           ref={ref}
           {...rest}
