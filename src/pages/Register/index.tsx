@@ -11,7 +11,10 @@ import { RegisterHeader } from "./RegisterHeader";
 
 const signInSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-  password: yup.string().required("Senha obrigatória"),
+  password: yup
+    .string()
+    .required("Senha obrigatória")
+    .min(6, "Mínimo de 6 caracteres"),
   name: yup.string().required("Nome obrigatório"),
   confirm_password: yup
     .string()
